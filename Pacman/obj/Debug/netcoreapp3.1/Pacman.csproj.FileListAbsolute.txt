@@ -40,3 +40,4 @@ C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\food.xnb
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\wall.xnb
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\graph.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\sprites.xnb

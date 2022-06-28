@@ -4,17 +4,9 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/energizer.png</File>
-    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/floor.png</File>
-    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/food.png</File>
-    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/graph.png</File>
-    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/wall.png</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/sprites.png</File>
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

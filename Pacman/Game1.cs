@@ -24,8 +24,8 @@ namespace Pacman
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _graphics.PreferredBackBufferWidth = 552;
-            _graphics.PreferredBackBufferHeight = 600;
+            _graphics.PreferredBackBufferWidth = 668;
+            _graphics.PreferredBackBufferHeight = 744;
             _graphics.ApplyChanges();
 
             base.Initialize();
@@ -37,6 +37,7 @@ namespace Pacman
 
             // TODO: use this.Content to load your game content here
             Map.LoadContent(Content);
+            _map.LoadMap();
         }
 
         protected override void Update(GameTime gameTime)

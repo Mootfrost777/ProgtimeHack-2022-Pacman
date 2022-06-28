@@ -11,7 +11,7 @@ namespace Pacman.Classes
 {
     public class Map
     {
-        private static List<Texture2D> textures = new List<Texture2D>();
+        private static Texture2D texture;
         
         private string[,] map;
         private int[,] dirs = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
@@ -24,7 +24,7 @@ namespace Pacman.Classes
             
         }
         
-        private Tuple<string, int[,]> GetCellType(int[] cords)
+        /*private Tuple<string, int[,]> GetCellType(int[] cords)
         {
             bool[] walls = new bool[4];
             for (int i = 0; i < dirs.GetLength(0); i++)            
@@ -39,19 +39,13 @@ namespace Pacman.Classes
 
             if (walls[0] == walls[2] && walls[0] == true)
             {
-                return new Tuple<string, int[,]>("transit", { { cords[0] + dirs[1, 0], cords[1] + dirs[1, 1] },  
-                }
             }
-        }
+        }*/
 
             
         public static void LoadContent(ContentManager Content)
         {
-            textures.Add(Content.Load<Texture2D>("wall"));
-            textures.Add(Content.Load<Texture2D>("food"));
-            textures.Add(Content.Load<Texture2D>("energizer"));
-            textures.Add(Content.Load<Texture2D>("floor"));
-            textures.Add(Content.Load<Texture2D>("graph"));
+            texture = Content.Load<Texture2D>("sprites");
         }
 
         public void LoadMap()
@@ -75,29 +69,38 @@ namespace Pacman.Classes
             {
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
-                    Texture2D texture;
-                    if (map[i, j] == "*")
+                    Point pos;
+                    Point size;
+                    
+                    switch (map[i, j])
                     {
-                        texture = textures[1];
+                        case "┃":
+                            pos = new Point(95, 240);
+                            size = new Point(25, 60);
+                            break;
+                        case "━":
+                            pos = new Point(0, 274);
+                            size = new Point(60, 26);
+                            break;
+                        case ".":
+                            pos = new Point(510, 0);
+                            size = new Point(30, 30);
+                            break;
+                        case "┏":
+                            pos = new Point(241, 241);
+                            size = new Point(61, 57);
+                            break;
+                        default:
+                            pos = new Point(0, 0);
+                            size = new Point(0, 0);
+                            break;
                     }
-                    else if (map[i, j] == "#")
-                    {
-                        texture = textures[0];
-                    }
-                    else if (map[i, j] == "@")
-                    {
-                        texture = textures[2];
-                    }
-                    else if (map[i, j] == "&")
-                    {
-                        texture = textures[4];
-                    }
-                    else
-                    {
-                        texture = textures[3];
-                    }
-                    Rectangle rectangle = new Rectangle(new Point(j * 24, i * 24), new Point(24, 24));
-                    spriteBatch.Draw(texture, rectangle, Color.White);
+                    Rectangle sourceRect = new Rectangle(pos, size);
+                    Rectangle destinationRect = new Rectangle(new Point(j * 24, i * 24), new Point(24, 24));
+                    spriteBatch.Draw(texture,
+                        destinationRect,
+                        sourceRect,
+                        Color.White);
                     
                 }
             }
