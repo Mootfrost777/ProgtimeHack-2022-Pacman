@@ -1,1 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/energizer.png","C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/bin/Windows/Content/energizer.xnb","TextureProcessor","Texture2DContent",173,4181,0.2493217
+"C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/floor.png","C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/bin/Windows/Content/floor.xnb","TextureProcessor","Texture2DContent",133,4181,0.017288
+"C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/food.png","C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/bin/Windows/Content/food.xnb","TextureProcessor","Texture2DContent",158,4181,0.0096496
+"C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/graph.png","C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/bin/Windows/Content/graph.xnb","TextureProcessor","Texture2DContent",138,4181,0.3421807
+"C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/wall.png","C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/bin/Windows/Content/wall.xnb","TextureProcessor","Texture2DContent",138,4181,0.0136216

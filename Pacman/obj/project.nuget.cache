@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "mUY5J9vSukuVeNvdp2z7DADF4xX0Xt41yvvMHr6+NfWvwgtCz4laNM1grYCGnu2WzNtz2FZqmVVt1AG4iZFg5A==",
+  "dgSpecHash": "GF41MSlyYZNU6802So6LFKzR+x9x/UdLHWarJV1NSBH9d9/KBxII+tmaEhdT3jH7TJon0nGAEv6QXRiNKVAMog==",
   "success": true,
   "projectFilePath": "C:\\Users\\Semejkin_AV\\Documents\\Github_repos\\Pacman\\Pacman\\Pacman.csproj",
   "expectedPackageFiles": [
@@ -124,7 +124,8 @@
     "C:\\Users\\Semejkin_AV\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
     "C:\\Users\\Semejkin_AV\\.nuget\\packages\\system.xml.xmldocument\\4.0.1\\system.xml.xmldocument.4.0.1.nupkg.sha512",
     "C:\\Users\\Semejkin_AV\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
-    "C:\\Users\\Semejkin_AV\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512"
+    "C:\\Users\\Semejkin_AV\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512",
+    "C:\\Users\\Semejkin_AV\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.25\\microsoft.netcore.app.host.win-x64.3.1.25.nupkg.sha512"
   ],
   "logs": []
 }

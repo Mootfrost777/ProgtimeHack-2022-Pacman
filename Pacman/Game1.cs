@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using Pacman.Classes;
+
 namespace Pacman
 {
     public class Game1 : Game
@@ -9,16 +11,22 @@ namespace Pacman
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        public Map _map;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            _map = new Map();
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            _graphics.PreferredBackBufferWidth = 552;
+            _graphics.PreferredBackBufferHeight = 600;
+            _graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -28,6 +36,7 @@ namespace Pacman
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            Map.LoadContent(Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -45,6 +54,9 @@ namespace Pacman
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            _map.Draw(_spriteBatch);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
