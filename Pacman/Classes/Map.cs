@@ -91,20 +91,33 @@ namespace Pacman.Classes
                             size = new Point(24, 26);
                             break;
                         case "┓":
-                            pos = new Point(325, 241);
-                            size = new Point(51, 57);
+                            pos = new Point(132, 98);
+                            size = new Point(12, 26);
+                            break;
+                        case "┗":
+                            pos = new Point(47, 108);
+                            size = new Point(24, 12);
+                            break;
+                        case "┛":
+                            pos = new Point(84, 113);
+                            size = new Point(16, 7);
                             break;
                         default:
                             pos = new Point(0, 0);
                             size = new Point(0, 0);
                             break;
                     }
+                    
+                    // Это костыль pro max для нормальной карты, не использовать!!!!!!!
                     Rectangle sourceRect = new Rectangle(pos, size);
                     Rectangle destinationRect = new Rectangle(new Point(j * 24, i * 24), size);
                     spriteBatch.Draw(texture,
-                        destinationRect,
-                        sourceRect,
-                        Color.White);
+                                     destinationRect,
+                                     sourceRect,
+                                     Color.White);   
+
+                    // Это ректэнгл объекта для колизии
+                    Rectangle boundingBox = new Rectangle(new Point(j * 24, i * 24), new Point(24, 24));
                     
                 }
             }

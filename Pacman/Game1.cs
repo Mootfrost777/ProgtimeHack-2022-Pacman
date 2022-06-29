@@ -57,6 +57,7 @@ namespace Pacman
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             _map.Draw(_spriteBatch);
+            GraphicsDevice.Clear(Color.Black);
             _spriteBatch.End();
 
             base.Draw(gameTime);
