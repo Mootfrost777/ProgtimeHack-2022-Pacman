@@ -75,20 +75,24 @@ namespace Pacman.Classes
                     switch (map[i, j])
                     {
                         case "┃":
-                            pos = new Point(95, 240);
-                            size = new Point(25, 60);
+                            pos = new Point(36, 96);
+                            size = new Point(12, 24);
                             break;
                         case "━":
-                            pos = new Point(0, 274);
-                            size = new Point(60, 26);
+                            pos = new Point(0, 98);
+                            size = new Point(24, 12);
                             break;
                         case ".":
                             pos = new Point(510, 0);
                             size = new Point(30, 30);
                             break;
                         case "┏":
-                            pos = new Point(241, 241);
-                            size = new Point(61, 57);
+                            pos = new Point(98, 98);
+                            size = new Point(24, 26);
+                            break;
+                        case "┓":
+                            pos = new Point(325, 241);
+                            size = new Point(51, 57);
                             break;
                         default:
                             pos = new Point(0, 0);
@@ -96,7 +100,7 @@ namespace Pacman.Classes
                             break;
                     }
                     Rectangle sourceRect = new Rectangle(pos, size);
-                    Rectangle destinationRect = new Rectangle(new Point(j * 24, i * 24), new Point(24, 24));
+                    Rectangle destinationRect = new Rectangle(new Point(j * 24, i * 24), size);
                     spriteBatch.Draw(texture,
                         destinationRect,
                         sourceRect,
