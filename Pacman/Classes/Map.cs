@@ -82,10 +82,6 @@ namespace Pacman.Classes
                             pos = new Point(0, 98);
                             size = new Point(24, 12);
                             break;
-                        case ".":
-                            pos = new Point(510, 0);
-                            size = new Point(30, 30);
-                            break;
                         case "┏":
                             pos = new Point(98, 98);
                             size = new Point(24, 26);
@@ -99,6 +95,10 @@ namespace Pacman.Classes
                             size = new Point(24, 12);
                             break;
                         case "┛":
+                            pos = new Point(84, 113);
+                            size = new Point(16, 7);
+                            break;
+                        case "C":
                             pos = new Point(84, 113);
                             size = new Point(16, 7);
                             break;
