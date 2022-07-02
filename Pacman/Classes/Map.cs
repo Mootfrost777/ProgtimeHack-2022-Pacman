@@ -9,46 +9,11 @@ using System.Linq;
 
 namespace Pacman.Classes
 {
-    public class Map
+    public static class Map
     {
-        private static Texture2D texture;
+        public static string[,] map;
         
-        private string[,] map;
-        private int[,] dirs = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
-
-        private void ScanMap()
-        {
-            Queue<int[]> toVisit = new Queue<int[]>();
-            List<int[]> visited = new List<int[]>();
-            
-            
-        }
-        
-        /*private Tuple<string, int[,]> GetCellType(int[] cords)
-        {
-            bool[] walls = new bool[4];
-            for (int i = 0; i < dirs.GetLength(0); i++)            
-            {     
-                if (map[cords[0] + dirs[i, 0],
-                        cords[1] + dirs[i, 1]]
-                        == "#")
-                {
-                    walls[i] = true;
-                }
-            }
-
-            if (walls[0] == walls[2] && walls[0] == true)
-            {
-            }
-        }*/
-
-            
-        public static void LoadContent(ContentManager Content)
-        {
-            texture = Content.Load<Texture2D>("sprites");
-        }
-
-        public void LoadMap()
+        public static void LoadMap()
         {
             string file = File.ReadAllText("map.txt").Replace("\r", "");
             string[] rows = file.Split('\n');
@@ -59,11 +24,23 @@ namespace Pacman.Classes
                 for (int j = 0; j < rows[i].Length; j++)
                 {
                     map[i, j] = rows[i][j].ToString();
+                    if (map[i,j] == ".")
+                    {
+                        Game1.Foods.Add(new Food("Point", new Vector2(24 * j + 12, 24 * i + 12)));
+                    }
+                    else if(map[i, j] == "O")
+                    {
+                        Game1.Foods.Add(new Food("Energyzer", new Vector2(24 * j + 12, 24 * i + 12)));
+                    }
+                    else if (map[i, j] == "C")
+                    {
+                        Game1.Foods.Add(new Food("Fruit", new Vector2(24 * j + 12, 24 * i + 12)));
+                    }
                 }
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public static void Draw(SpriteBatch spriteBatch)
         {
             for (int i = 0; i < map.GetLength(0); i++)
             {
@@ -74,6 +51,7 @@ namespace Pacman.Classes
                     
                     switch (map[i, j])
                     {
+                        
                         case "┃":
                             pos = new Point(36, 96);
                             size = new Point(12, 24);
@@ -98,10 +76,6 @@ namespace Pacman.Classes
                             pos = new Point(84, 113);
                             size = new Point(16, 7);
                             break;
-                        case "C":
-                            pos = new Point(84, 113);
-                            size = new Point(16, 7);
-                            break;
                         default:
                             pos = new Point(0, 0);
                             size = new Point(0, 0);
@@ -111,13 +85,10 @@ namespace Pacman.Classes
                     // Это костыль pro max для нормальной карты, не использовать!!!!!!!
                     Rectangle sourceRect = new Rectangle(pos, size);
                     Rectangle destinationRect = new Rectangle(new Point(j * 24, i * 24), size);
-                    spriteBatch.Draw(texture,
+                    spriteBatch.Draw(Game1.spriteSheet,
                                      destinationRect,
                                      sourceRect,
                                      Color.White);   
-
-                    // Это ректэнгл объекта для колизии
-                    Rectangle boundingBox = new Rectangle(new Point(j * 24, i * 24), new Point(24, 24));
                     
                 }
             }

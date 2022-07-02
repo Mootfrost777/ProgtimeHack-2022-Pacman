@@ -4,9 +4,27 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/chompSound.wav</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/deathSound.wav</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/fruitEaten.mp3</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/gameFont.spritefont</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/gameOverFont.spritefont</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/ghostDeathSound.mp3</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/intermissionSound.wav</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/logo.png</File>
+    <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/mainSong.wav</File>
     <File>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/sprites.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

@@ -41,3 +41,15 @@ C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\wall.xnb
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\graph.xnb
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\sprites.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\gameFont.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\logo.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\chompSound.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\deathSound.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\mainSong.wma
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\mainSong.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\gameOverFont.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\intermissionSound.wma
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\intermissionSound.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\ghostDeathSound.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\fruitEaten.xnb
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\chompSound.wma
