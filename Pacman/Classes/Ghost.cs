@@ -269,7 +269,7 @@ namespace Pacman.Classes
                 vibrateThread.Start(200);
                 Speed *= 4;
                 Debug.WriteLine(200 * Game1.pacman.ghostsEaten);
-                Game1.pacman.highScore += 200 * Game1.pacman.ghostsEaten;
+                Game1.pacman.Score += 200 * Game1.pacman.ghostsEaten;
                 Game1.pacman.ghostsEaten++;
                 Game1.ghostDiedSound.Play();
                 Directions.Clear();
