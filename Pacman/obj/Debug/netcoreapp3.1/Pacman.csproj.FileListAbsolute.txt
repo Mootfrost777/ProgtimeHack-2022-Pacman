@@ -53,3 +53,4 @@ C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\ghostDeathSound.xnb
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\fruitEaten.xnb
 C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\chompSound.wma
+C:\Users\Semejkin_AV\Documents\Github_repos\Pacman\Pacman\bin\Debug\netcoreapp3.1\Content\rulesFont.xnb

@@ -7,6 +7,7 @@ using Pacman.Classes;
 using Pacman.Classes.UI;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using System.Threading;
 
 using System.IO;
 
@@ -14,7 +15,7 @@ namespace Pacman
 {
     public enum GameState
     {
-        Game, Menu, GameOver, NextLevel
+        Game, Menu, GameOver, NextLevel, HowToPlay
     }
 
     public class Game1 : Game
@@ -37,6 +38,7 @@ namespace Pacman
         private Menu menu;
         private HUD hud;
         private GameOver gameOver;
+        private HowToPlay howToPlay;
 
         // Music fields
         public static SoundEffect deathSong;
@@ -47,7 +49,6 @@ namespace Pacman
 
         public static Song mainSong;
         public static Song intermissionSong;
-        
 
         public Game1()
         {
@@ -78,6 +79,7 @@ namespace Pacman
             menu = new Menu();
             hud = new HUD(new Vector2(0, 740));
             gameOver = new GameOver();
+            howToPlay = new HowToPlay();
 
             base.Initialize();
         }
@@ -88,8 +90,11 @@ namespace Pacman
 
             // Load sprites
             spriteSheet = Content.Load<Texture2D>("sprites");
-            menu.LoadContent(Content);
-            Label.LoadContent(Content);
+            menu.LoadContent(Content, "gameFont");
+            hud.LoadContent(Content, "gameFont");
+            howToPlay.LoadContent(Content, "rulesFont");
+            gameOver.LoadContent(Content, "gameOverFont");
+            
             for (int i = 0; i < Foods.Count; i++)
             {
                 Foods[i].LoadContent();
@@ -115,6 +120,18 @@ namespace Pacman
 
         protected override void Update(GameTime gameTime)
         {
+            GamePadState gamePadState = GamePad.GetState(0);
+            KeyboardState keyboardState = Keyboard.GetState();
+
+            if ((gamePadState.Buttons.Start == ButtonState.Pressed) ||
+                keyboardState.IsKeyDown(Keys.Escape))
+            {
+                gameState = GameState.Menu;
+                RestartGame(true);
+                pacman.Score = 0;
+                pacman.ExtraLives = 4;
+            }
+            
             switch (gameState)
             {
                 case GameState.Menu:
@@ -125,6 +142,9 @@ namespace Pacman
                     break;
                 case GameState.GameOver:
                     gameOver.Update();
+                    break;
+                case GameState.HowToPlay:
+                    howToPlay.Update();
                     break;
             }
 
@@ -165,6 +185,9 @@ namespace Pacman
                     break;
                 case GameState.GameOver:
                     gameOver.Draw(_spriteBatch);
+                    break;
+                case GameState.HowToPlay:
+                    howToPlay.Draw(_spriteBatch);
                     break;
             }
 

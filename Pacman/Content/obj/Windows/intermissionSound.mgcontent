@@ -3,7 +3,7 @@
   <SourceFile>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/intermissionSound.wav</SourceFile>
   <SourceTime>2004-04-03T11:27:18+04:00</SourceTime>
   <DestFile>C:/Users/Semejkin_AV/Documents/Github_repos/Pacman/Pacman/Content/bin/Windows/intermissionSound.xnb</DestFile>
-  <DestTime>2022-07-02T23:38:44.8981732+03:00</DestTime>
+  <DestTime>2022-07-03T11:26:59.3191079+03:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54+03:00</ImporterTime>
   <Processor>SongProcessor</Processor>

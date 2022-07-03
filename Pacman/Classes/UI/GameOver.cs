@@ -14,26 +14,53 @@ namespace Pacman.Classes.UI
         private KeyboardState keyboardState;
         private KeyboardState prevKeyboardState;
         private int selectedItem = 0;
+        private Label label = new Label();
+        private Label menuLabel = new Label();
+
+        private GamePadState gamePadState;
+        private GamePadState prevGamePadState;
 
         private string[] menuElements
             = { "play again", "main menu", "quit" };
         
+        public void LoadContent(ContentManager Content, string fontName)
+        {
+            label.LoadContent(Content, fontName);
+            menuLabel.LoadContent(Content, "gameFont");
+        }
+
         public void Update()
         {
             keyboardState = Keyboard.GetState();
+            gamePadState = GamePad.GetState(0);
 
-            // Move in the menu
-            if (keyboardState.IsKeyDown(Keys.W) && selectedItem > 0 && keyboardState != prevKeyboardState)
+            bool stickUp = false;
+            bool stickDown = false;
+
+            if (Math.Abs(gamePadState.ThumbSticks.Left.Y) > Math.Abs(gamePadState.ThumbSticks.Left.X) &&
+                Math.Abs(gamePadState.ThumbSticks.Left.Y) > 0.5f)
+            {
+                if (gamePadState.ThumbSticks.Left.Y > 0) stickUp = true;
+                else stickDown = true;
+            }
+
+            if (((keyboardState.IsKeyDown(Keys.W) && keyboardState != prevKeyboardState) ||
+                (stickUp && prevGamePadState.ThumbSticks.Left.Y <= 0.5f) ||
+                ((gamePadState.DPad.Up == ButtonState.Pressed) && (prevGamePadState.DPad.Up == ButtonState.Released)))
+                && selectedItem > 0)
             {
                 selectedItem--;
             }
-            if (keyboardState.IsKeyDown(Keys.S) && selectedItem < menuElements.Length - 1 && keyboardState != prevKeyboardState)
+            if (((keyboardState.IsKeyDown(Keys.S) && keyboardState != prevKeyboardState) ||
+                (stickDown && prevGamePadState.ThumbSticks.Left.Y >= -0.5f) ||
+                ((gamePadState.DPad.Down == ButtonState.Pressed) && (prevGamePadState.DPad.Down == ButtonState.Released)))
+                && selectedItem < menuElements.Length - 1)
             {
                 selectedItem++;
             }
-
+            
             // Select menu item
-            if (keyboardState.IsKeyDown(Keys.Enter) && keyboardState != prevKeyboardState)
+            if ((keyboardState.IsKeyDown(Keys.Enter) || gamePadState.Buttons.A == ButtonState.Pressed))
             {
                 if (selectedItem == 0)
                 {
@@ -52,16 +79,17 @@ namespace Pacman.Classes.UI
                 }
             }
             prevKeyboardState = keyboardState;
+            prevGamePadState = gamePadState;
         }
         
         public void Draw(SpriteBatch spriteBatch)
         {
             if (counter <= 30)
             {
-                Label label = new Label("GAME OVER", new Vector2(0, 150), Color.Red);
-                label.HorizontalCenterGameOver((int)Game1.screenSize.X);
+                label.SetData("GAME OVER", new Vector2(0, 150), Color.Red);
+                label.HorizontalCenter((int)Game1.screenSize.X);
 
-                label.DrawGameOver(spriteBatch);
+                label.Draw(spriteBatch);
             }
             else if (counter >= 60)
             {
@@ -76,12 +104,12 @@ namespace Pacman.Classes.UI
                 {
                     element = "> " + element + " <";
                 }
-                Label label = new Label(element,
-                    new Vector2(0, 500 + i * 35),
+                menuLabel.SetData(element,
+                    new Vector2(0, 600 + i * 35),
                     Color.White);
-                label.HorizontalCenter((int)Game1.screenSize.X);
+                menuLabel.HorizontalCenter((int)Game1.screenSize.X);
 
-                label.Draw(spriteBatch);
+                menuLabel.Draw(spriteBatch);
             }
         }
     }

@@ -55,14 +55,38 @@ namespace Pacman
 
         public void Update()
         {
+            GamePadState gamePadState = GamePad.GetState(0);
             KeyboardState state = Keyboard.GetState();
-            if ((PressedKey == Keys.None || Direction == null) && state.GetPressedKeyCount() != 0)
+
+
+            bool stickUp = false;
+            bool stickDown = false;
+            bool stickLeft = false;
+            bool stickRight = false;
+
+            if (Math.Abs(gamePadState.ThumbSticks.Left.Y) > Math.Abs(gamePadState.ThumbSticks.Left.X) &&
+                Math.Abs(gamePadState.ThumbSticks.Left.Y) > 0.25f)
+            {
+                if (gamePadState.ThumbSticks.Left.Y > 0) stickUp = true;
+                else stickDown = true;
+            }
+            else if (Math.Abs(gamePadState.ThumbSticks.Left.X) > Math.Abs(gamePadState.ThumbSticks.Left.Y) &&
+                Math.Abs(gamePadState.ThumbSticks.Left.X) > 0.25f)
+            {
+                if (gamePadState.ThumbSticks.Left.X > 0) stickRight = true;
+                else stickLeft = true;
+            }
+
+                if ((PressedKey == Keys.None || Direction == null) && state.GetPressedKeyCount() != 0)
             {
                 PressedKey = state.GetPressedKeys()[0];
             }
             if ((Position.Y - 12) % 24 == 0 && (Position.X - 12) % 24 == 0)
             {
-                if (PressedKey == Keys.W && !Obstackles.Contains(file[(int)(Position.Y / 24 - 1)][(int)Position.X / 24]))
+                if ((PressedKey == Keys.W || 
+                    stickUp ||
+                    gamePadState.DPad.Up == ButtonState.Pressed) &&
+                    !Obstackles.Contains(file[(int)(Position.Y / 24 - 1)][(int)Position.X / 24]))
                 {
                     Rotation = 0;
                     PressedKey = Keys.None;
@@ -71,7 +95,10 @@ namespace Pacman
                         Direction = "Up";
                     }
                 }
-                else if (PressedKey == Keys.D && !Obstackles.Contains(file[(int)Position.Y / 24][(int)(Position.X / 24 + 1)]))
+                else if ((PressedKey == Keys.D ||
+                    stickRight ||
+                    gamePadState.DPad.Right == ButtonState.Pressed) &&
+                    !Obstackles.Contains(file[(int)Position.Y / 24][(int)(Position.X / 24 + 1)]))
                 {
                     Rotation = (float)(0.5 * Math.PI);
                     PressedKey = Keys.None;
@@ -80,7 +107,10 @@ namespace Pacman
                         Direction = "Right";
                     }
                 }
-                else if (PressedKey == Keys.S && !Obstackles.Contains(file[(int)(Position.Y / 24 + 1)][(int)Position.X / 24]))
+                else if ((PressedKey == Keys.S ||
+                    stickDown ||
+                    gamePadState.DPad.Down == ButtonState.Pressed) &&
+                    !Obstackles.Contains(file[(int)(Position.Y / 24 + 1)][(int)Position.X / 24]))
                 {
                     Rotation = (float)(Math.PI);
                     PressedKey = Keys.None;
@@ -89,7 +119,10 @@ namespace Pacman
                         Direction = "Down";
                     }
                 }
-                else if (PressedKey == Keys.A && !Obstackles.Contains(file[(int)Position.Y / 24][(int)(Position.X / 24 - 1)]))
+                else if ((PressedKey == Keys.A ||
+                    stickLeft ||
+                    gamePadState.DPad.Left == ButtonState.Pressed) &&
+                    !Obstackles.Contains(file[(int)Position.Y / 24][(int)(Position.X / 24 - 1)]))
                 {
                     Rotation = (float)(1.5 * Math.PI);
                     PressedKey = Keys.None;

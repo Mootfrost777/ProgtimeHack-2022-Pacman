@@ -16,6 +16,11 @@ namespace Pacman.Classes.UI
         private KeyboardState keyboardState;
         private KeyboardState prevKeyboardState;
 
+        private GamePadState gamePadState;
+        private GamePadState prevGamePadState;
+
+        private Label label = new Label();
+
         private static List<Character> characters = new List<Character>()
         {
             new Character("- shadow       \"blinky\"", new Point(0, 144), new Point(22, 22), Color.Red),
@@ -29,27 +34,44 @@ namespace Pacman.Classes.UI
 
         private int selectedItem = 0;
 
-        public void LoadContent(ContentManager content)
+        public void LoadContent(ContentManager content, string fontName)
         {
             logo = content.Load<Texture2D>("logo");
+            label.LoadContent(content, fontName);
         }
 
         public void Update()
         {
             keyboardState = Keyboard.GetState();
+            gamePadState = GamePad.GetState(0);
 
-            // Move in the menu
-            if (keyboardState.IsKeyDown(Keys.W) && selectedItem > 0 && keyboardState != prevKeyboardState)
+            bool stickUp = false;
+            bool stickDown = false;
+
+            if (Math.Abs(gamePadState.ThumbSticks.Left.Y) > Math.Abs(gamePadState.ThumbSticks.Left.X) &&
+                Math.Abs(gamePadState.ThumbSticks.Left.Y) > 0.5f)
+            {
+                if (gamePadState.ThumbSticks.Left.Y > 0) stickUp = true;
+                else stickDown = true;
+            }
+
+            if (((keyboardState.IsKeyDown(Keys.W) && keyboardState != prevKeyboardState) ||
+                (stickUp && prevGamePadState.ThumbSticks.Left.Y <= 0.5f) ||
+                ((gamePadState.DPad.Up == ButtonState.Pressed) && (prevGamePadState.DPad.Up == ButtonState.Released)))
+                && selectedItem > 0 )
             {
                 selectedItem--;
             }
-            if (keyboardState.IsKeyDown(Keys.S) && selectedItem < menuElements.Length - 1 && keyboardState != prevKeyboardState)
+            if (((keyboardState.IsKeyDown(Keys.S) && keyboardState != prevKeyboardState) ||
+                (stickDown && prevGamePadState.ThumbSticks.Left.Y >= -0.5f) ||
+                ((gamePadState.DPad.Down == ButtonState.Pressed) && (prevGamePadState.DPad.Down == ButtonState.Released))) 
+                && selectedItem < menuElements.Length - 1)
             {
                 selectedItem++;
             }
 
             // Select menu item
-            if (keyboardState.IsKeyDown(Keys.Enter) && keyboardState != prevKeyboardState)
+            if ((keyboardState.IsKeyDown(Keys.Enter) || gamePadState.Buttons.A == ButtonState.Pressed))
             {
                 if (selectedItem == 0)
                 {
@@ -61,7 +83,7 @@ namespace Pacman.Classes.UI
                 }
                 else if (selectedItem == 1)
                 {
-                    // How to play
+                    Game1.gameState = GameState.HowToPlay;
                 }
                 else if (selectedItem == 2)
                 {
@@ -69,11 +91,12 @@ namespace Pacman.Classes.UI
                 }
             }
             prevKeyboardState = keyboardState;
+            prevGamePadState = gamePadState;
         }
         
         public void Draw(SpriteBatch spriteBatch)
         {
-            Label label = new Label($"Hi-score:{Game1.pacman.highScore}",
+            label.SetData($"Hi-score:{Game1.pacman.highScore}",
                 new Vector2(50, 20),
                 Color.DarkRed);
 
@@ -95,7 +118,7 @@ namespace Pacman.Classes.UI
                     sorceRect,
                     Color.White);
 
-                label = new Label(character.description,
+                label.SetData(character.description,
                     new Vector2(75 + character.size.X, 270 + i * character.size.Y * 1.3f),
                     character.color);
                 label.Draw(spriteBatch);
@@ -108,8 +131,8 @@ namespace Pacman.Classes.UI
                 {
                     element = "> " + element + " <";
                 }
-                label = new Label(element,
-                    new Vector2(0, 500 + i * 35),
+                label.SetData(element,
+                    new Vector2(0, 600 + i * 35),
                     Color.White);
                 label.HorizontalCenter((int)Game1.screenSize.X);
 

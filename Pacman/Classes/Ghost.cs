@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Input;
 using System.IO;
 using System.Linq;
 using System.Diagnostics;
+using System.Threading;
 
 namespace Pacman.Classes
 {
@@ -227,11 +228,29 @@ namespace Pacman.Classes
                 // Pacman died
                 if (Game1.pacman.ExtraLives > 0)
                 {
+                    Thread vibrateThread = new Thread(time =>
+                    {
+                        int vibrationTime = (int)time;
+                        GamePad.SetVibration(0, 1, 1);
+                        Thread.Sleep(vibrationTime);
+                        GamePad.SetVibration(0, 0, 0);
+
+                    });
+                    vibrateThread.Start(400);
                     Game1.deathSong.Play();
                     Game1.RestartGame(false);
                 }
                 else
                 {
+                    Thread vibrateThread = new Thread(time =>
+                    {
+                        int vibrationTime = (int)time;
+                        GamePad.SetVibration(0, 1, 1);
+                        Thread.Sleep(vibrationTime);
+                        GamePad.SetVibration(0, 0, 0);
+
+                    });
+                    vibrateThread.Start(1000);
                     Game1.UpdateHighScore(Game1.pacman.highScore);
                     Game1.gameState = GameState.GameOver;
                     Game1.deathSong.Play();
@@ -239,6 +258,15 @@ namespace Pacman.Classes
             }
             else if (GhostRectangle.Intersects(Game1.pacman.PacmanRectangle) && IsAfraidEffectOn && IsAlive)
             {
+                Thread vibrateThread = new Thread(time =>
+                {
+                    int vibrationTime = (int)time;
+                    GamePad.SetVibration(0, 1, 1);
+                    Thread.Sleep(vibrationTime);
+                    GamePad.SetVibration(0, 0, 0);
+
+                });
+                vibrateThread.Start(200);
                 Speed *= 4;
                 Debug.WriteLine(200 * Game1.pacman.ghostsEaten);
                 Game1.pacman.highScore += 200 * Game1.pacman.ghostsEaten;
