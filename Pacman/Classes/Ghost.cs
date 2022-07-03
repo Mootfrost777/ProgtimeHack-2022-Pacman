@@ -48,7 +48,7 @@ namespace Pacman.Classes
             IsAfraidEffectOn = false;
             AfraidTime = 0;
             IsAlive = true;
-            Obstackles = "┃━┏┓┗┛";
+            Obstackles = "┃━┏┓┗┛!";
             Directions = new List<DirectionsEnum>();
             if (GhostName == "Blinky")
             {
@@ -102,7 +102,7 @@ namespace Pacman.Classes
         {
             if ((Directions.Count == 0 || CurrentDirection == DirectionsEnum.Stop))
             {
-                if (IsAlive && !IsAfraidEffectOn && GhostName == "Blinky")
+                if (IsAlive && !IsAfraidEffectOn)
                 {
                     Vector2 PersonalPosition = GetPersonalTargetPosition();
                     Directions = Finder.FindWave((int)Position.X / 24, (int)Position.Y / 24, (int)PersonalPosition.X / 24, (int)PersonalPosition.Y / 24);
@@ -298,15 +298,138 @@ namespace Pacman.Classes
 
         public Vector2 GetPersonalTargetPosition()
         {
+            Vector2 TargetPosition = new Vector2();
             if (GhostName == "Blinky")
             {
-                return Game1.pacman.Position;
+                TargetPosition = Game1.pacman.Position;
+            }
+            else if (GhostName == "Clyde")
+            {
+                Vector2 minusVector = Position - Game1.pacman.Position;
+                minusVector = new Vector2(minusVector.X, minusVector.Y) / 24;
+                if (Math.Abs(minusVector.X) <= 4 && Math.Abs(minusVector.Y) <= 4)
+                {
+                    for (int i = 0; i < Game1.Ghosts.Count; i++)
+                    {
+                        if (Game1.Ghosts[i].GhostName == "Pinky")
+                        {
+                            TargetPosition = Game1.Ghosts[i].Position;
+                        }
+                    }
+                }
+                else
+                {
+                    TargetPosition = Game1.pacman.Position;
+                }
             }
             else if (GhostName == "Pinky")
             {
-
+                if (Game1.pacman.Position.Y / 24 + 3 <= 29 && Game1.pacman.Position.Y / 24 - 3 >= 1 && Game1.pacman.Position.X / 24 + 3 <= 26 && Game1.pacman.Position.X / 24 - 3 >= 1)
+                {
+                    if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24 - 2.5)][(int)(Game1.pacman.Position.X / 24 - 2.5)]))
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X - 24 * 2.5), (int)(Game1.pacman.Position.Y - 24 * 2.5));
+                    }
+                    else if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24 + 2.5)][(int)(Game1.pacman.Position.X / 24 + 2.5)]))
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X + 24 * 2.5), (int)(Game1.pacman.Position.Y + 24 * 2.5));
+                    }
+                    else if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24 - 2.5)][(int)(Game1.pacman.Position.X / 24 + 2.5)]))
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X + 24 * 2.5), (int)(Game1.pacman.Position.Y - 24 * 2.5));
+                    }
+                    else if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24 + 2.5)][(int)(Game1.pacman.Position.X / 24 - 2.5)]))
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X - 24 * 2.5), (int)(Game1.pacman.Position.Y + 24 * 2.5));
+                    }
+                    else if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24 + 2.5)][(int)(Game1.pacman.Position.X / 24)]) && Game1.pacman.Direction != "Down")
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X), (int)(Game1.pacman.Position.Y + 24 * 2.5));
+                    }
+                    else if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24 - 2.5)][(int)(Game1.pacman.Position.X / 24)]) && Game1.pacman.Direction != "Up")
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X), (int)(Game1.pacman.Position.Y - 24 * 2.5));
+                    }
+                    else if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24)][(int)(Game1.pacman.Position.X / 24 + 2.5)]) && Game1.pacman.Direction != "Right")
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X + 24 * 2.5), (int)(Game1.pacman.Position.Y));
+                    }
+                    else if (!Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 24)][(int)(Game1.pacman.Position.X / 24 - 2.5)]) && Game1.pacman.Direction != "Left")
+                    {
+                        TargetPosition = new Vector2((int)(Game1.pacman.Position.X - 24 * 2.5), (int)(Game1.pacman.Position.Y));
+                    }
+                }
+                else
+                {
+                    TargetPosition = Game1.pacman.Position;
+                }
             }
-            return new Vector2();
+            else if (GhostName == "Inky")
+            {
+                if (Game1.pacman.Position.Y / 24 + 3 <= 29 && Game1.pacman.Position.Y / 24 - 3 >= 1 && Game1.pacman.Position.X / 24 + 3 <= 26 && Game1.pacman.Position.X / 24 - 3 >= 1)
+                {
+                    int X = 0;
+                    int Y = 0;
+                    float i = (float)1.5;
+                    if (Game1.pacman.Direction != "Up" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48 + i)][(int)(Game1.pacman.Position.X / 48)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2, Game1.pacman.Position.Y / 2 + i * 24);
+                    }
+                    else if (Game1.pacman.Direction != "Down" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48 - i)][(int)(Game1.pacman.Position.X / 48)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2, Game1.pacman.Position.Y / 2 - i * 24);
+                    }
+                    else if (Game1.pacman.Direction != "Left" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48)][(int)(Game1.pacman.Position.X / 48 + i)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2 + i * 24, Game1.pacman.Position.Y / 2);
+                    }
+                    else if (Game1.pacman.Direction != "Right" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48)][(int)(Game1.pacman.Position.X / 48 - i)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2 - i * 24, Game1.pacman.Position.Y / 2);
+                    }
+                    else if (Game1.pacman.Direction != "Up" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48 + i + 1)][(int)(Game1.pacman.Position.X / 48)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2, Game1.pacman.Position.Y / 2 + i * 24 + 24);
+                    }
+                    else if (Game1.pacman.Direction != "Left" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48)][(int)(Game1.pacman.Position.X / 48 + i + 1)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2 + i * 24 + 24, Game1.pacman.Position.Y / 2);
+                    }
+                    else if (Game1.pacman.Direction != "Down" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48 - i - 1)][(int)(Game1.pacman.Position.X / 48)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2, Game1.pacman.Position.Y / 2 - i * 24 - 24);
+                    }
+                    else if (Game1.pacman.Direction != "Right" && !Obstackles.Contains(file[(int)(Game1.pacman.Position.Y / 48)][(int)(Game1.pacman.Position.X / 48 - i - 1)]))
+                    {
+                        TargetPosition = new Vector2(Game1.pacman.Position.X / 2 - i * 24 - 24, Game1.pacman.Position.Y / 2);
+                    }
+                    else
+                    {
+                        TargetPosition = Game1.pacman.Position;
+                    }
+                }
+                else
+                {
+                    if (Game1.pacman.Position.X < 180)
+                    {
+                        TargetPosition = new Vector2(14 * 24, 26 * 24);
+                    }
+                    else if (Game1.pacman.Position.X > 408)
+                    {
+                        TargetPosition = new Vector2(14 * 24, 24);
+                    }
+                    else
+                    {
+                        TargetPosition = Game1.pacman.Position;
+                    }
+                }
+            }
+            if (TargetPosition == new Vector2(0, 0))
+            {
+                TargetPosition = Position;
+            }
+            return TargetPosition;
         }
+
     }
 }

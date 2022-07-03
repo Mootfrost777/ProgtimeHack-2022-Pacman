@@ -10,7 +10,7 @@ namespace Pacman.Classes
         private static int[,] Map { get; set; }
         private static List<string> walls = new List<string>()
         {
-            "┃", "━", "┏", "┓", "┗", "┛"
+            "┃", "━", "┏", "┓", "┗", "┛", "1", "2", "!"
         };
         private static int mapWidth;
         private static int mapHeight;

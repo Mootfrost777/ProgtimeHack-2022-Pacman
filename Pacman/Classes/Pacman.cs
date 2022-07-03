@@ -48,7 +48,7 @@ namespace Pacman
             Position = new Vector2(324, 564);
             CurrentTextureNumber = 0;
             EnergyzerTime = 0;
-            Obstackles = "┃━┏┓┗┛";
+            Obstackles = "┃━┏┓┗┛!";
             IsEnergyzerEffectOn = false;
             PacmanRectangle = new Rectangle(0, 0, (int)(24), (int)(24));
         }
