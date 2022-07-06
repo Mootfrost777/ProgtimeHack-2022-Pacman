@@ -3,7 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace Pacman_refactored.Classes.Interfaces
+using Pacman_refactored.Enums;
+
+namespace Pacman_refactored.Interfaces
 {
     public interface IControl
     {

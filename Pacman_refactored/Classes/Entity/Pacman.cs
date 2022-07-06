@@ -1,9 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Pacman_refactored.Classes.Interfaces;
 
-namespace Pacman_refactored.Classes
+using Pacman_refactored.Interfaces;
+using Pacman_refactored.Enums;
+
+namespace Pacman_refactored.Classes.Entity
 {
     public class Pacman : Entity, IMovable, IRotatable, IAnimate, IControl
     {

@@ -2,10 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-using Pacman_refactored.Classes.Interfaces;
-using System.Runtime.CompilerServices;
+using Pacman_refactored.Interfaces;
+using Pacman_refactored.Enums;
 
-namespace Pacman_refactored.Classes
+namespace Pacman_refactored.Classes.Entity
 {
     public abstract class Entity : IMovable, IRotatable, IAnimate
     {
@@ -27,9 +27,10 @@ namespace Pacman_refactored.Classes
         public abstract int TextureNumber { get; set; }
         public abstract int TextureCount { get; set; }
 
+
         public virtual void Update(GameTime gameTime)
         {
-            Boundingbox = new Rectangle((int)Position.X, (int)Position.Y, (int)CellSize, (int)CellSize);
+            Boundingbox = new Rectangle((int)Position.X, (int)Position.Y, CellSize, CellSize);
             IMovable.DirectionMove(Direction, Position, Speed, Game1.Map);
         }
 

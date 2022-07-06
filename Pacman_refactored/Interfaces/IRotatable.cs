@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pacman_refactored.Classes.Interfaces
+using Pacman_refactored.Enums;
+
+namespace Pacman_refactored.Interfaces
 {
     public interface IRotatable
     {
