@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pacman_refactored.Classes.UI.Label.Enums
+namespace Mootfrost.Monogame.Label.Properties
 {
     public enum VerticalAlignment
     {

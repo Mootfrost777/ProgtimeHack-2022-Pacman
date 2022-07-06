@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
 
-namespace Pacman_refactored.Classes.Interfaces
+namespace Pacman_refactored.Interfaces
 {
     public interface IAnimate
     {

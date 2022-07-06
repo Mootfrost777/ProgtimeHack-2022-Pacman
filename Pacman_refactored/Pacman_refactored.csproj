@@ -28,6 +28,6 @@
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.0.1641" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Classes\UI\" />
+    <ProjectReference Include="..\LabelMonoGame\LabelMonoGame.csproj" />
   </ItemGroup>
 </Project>
