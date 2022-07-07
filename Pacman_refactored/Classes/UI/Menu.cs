@@ -18,7 +18,7 @@ namespace Pacman_refactored.Classes.UI
         public abstract string[] MenuItems { get; set; }
         public abstract int SelectedItem { get; set; }
 
-        public abstract Direction PrevDirection { get; set; }
+        public Direction PrevDirection { get; set; }
 
         public virtual void Update(GameTime gameTime)
         {
@@ -51,6 +51,13 @@ namespace Pacman_refactored.Classes.UI
 
                 label.Draw(spriteBatch);
             }
+        }
+
+        public Direction GetDirection()
+        {
+
+
+            return IControl.GetDirection();
         }
     }
 }

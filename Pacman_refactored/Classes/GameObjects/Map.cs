@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace Pacman_refactored.Classes
+namespace Pacman_refactored.Classes.GameObjects
 {
     public class Map
     {

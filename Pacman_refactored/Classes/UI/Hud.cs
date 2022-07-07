@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pacman_refactored.Classes.UI
 {
-    public class GameOverMenu : Menu
+    public class Hud
     {
     }
 }
