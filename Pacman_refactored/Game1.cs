@@ -2,12 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-
-using Pacman_refactored.Classes;
 using Pacman_refactored.Enums;
-using Pacman_refactored.Classes.Entity;
+using Pacman_refactored.Classes.GameObjects.Entity;
 using Pacman_refactored.Classes.UI;
-using Pacman_refactored.Classes.Food;
+using Pacman_refactored.Classes.GameObjects.Food;
+using Pacman_refactored.Classes.GameObjects;
 
 namespace Pacman_refactored
 {

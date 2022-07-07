@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Pacman_refactored.Classes.Food
+namespace Pacman_refactored.Classes.GameObjects.Food
 {
     public class Fruit : Food
     {

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 using Pacman_refactored.Enums;
-using Pacman_refactored.Classes;
+using Pacman_refactored.Classes.GameObjects;
 
 namespace Pacman_refactored.Interfaces
 {

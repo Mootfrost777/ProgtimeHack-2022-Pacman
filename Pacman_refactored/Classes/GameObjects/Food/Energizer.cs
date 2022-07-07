@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Pacman_refactored.Interfaces;
 
-namespace Pacman_refactored.Classes.Food
+namespace Pacman_refactored.Classes.GameObjects.Food
 {
     public class Energizer : Food, IAnimate
     {

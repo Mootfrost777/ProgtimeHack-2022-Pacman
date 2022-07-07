@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Pacman_refactored.Interfaces;
 using Pacman_refactored.Enums;
 
-namespace Pacman_refactored.Classes.Entity
+namespace Pacman_refactored.Classes.GameObjects.Entity
 {
     public abstract class Entity : IMovable, IRotatable, IAnimate
     {

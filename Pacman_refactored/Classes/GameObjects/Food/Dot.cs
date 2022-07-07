@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Pacman_refactored.Classes.Food
+namespace Pacman_refactored.Classes.GameObjects.Food
 {
     public class Dot : Food
     {

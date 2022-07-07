@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Pacman_refactored.Interfaces;
 using Pacman_refactored.Enums;
 
-namespace Pacman_refactored.Classes.Entity
+namespace Pacman_refactored.Classes.GameObjects.Entity
 {
     public class Ghost : Entity, IAnimate, IMovable
     {
